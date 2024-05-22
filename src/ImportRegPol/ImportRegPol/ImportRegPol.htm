@@ -1,0 +1,240 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 12 (filtered)">
+<title>ImportRegPol - readme</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+@font-face
+	{font-family:"Lucida Console";
+	panose-1:2 11 6 9 4 5 4 2 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+h1
+	{mso-style-link:"Heading 1 Char";
+	margin-top:24.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Cambria","serif";
+	color:#365F91;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:13.0pt;
+	font-family:"Cambria","serif";
+	color:#4F81BD;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-link:"Balloon Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";}
+span.Heading1Char
+	{mso-style-name:"Heading 1 Char";
+	mso-style-link:"Heading 1";
+	font-family:"Cambria","serif";
+	color:#365F91;
+	font-weight:bold;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	font-weight:bold;}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-link:"Balloon Text";
+	font-family:"Tahoma","sans-serif";}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	margin-right:0in;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+span.emailstyle20
+	{mso-style-name:emailstyle20;
+	font-family:"Calibri","sans-serif";
+	color:windowtext;}
+span.emailstyle21
+	{mso-style-name:emailstyle21;
+	font-family:"Calibri","sans-serif";
+	color:#1F497D;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=Section1>
+
+<h1><span style='color:windowtext'>ImportRegPol</span></h1>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>ImportRegPol is a non-interactive tool that imports the
+settings from a Registry Policy (registry.pol) file into the Computer or User
+configuration of the local group policy of the current computer.&nbsp; It can
+also parse a registry.pol file and produce an editable text file that can be
+consumed by Apply_LGPO_Delta v2.0.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<h2><span style='color:windowtext'>Introduction</span></h2>
+
+<p class=MsoNormal>Administrators frequently apply policies by copying
+registry.pol files into the Group Policy folders.&nbsp; This technique is not
+supported by Microsoft, and has the unfortunate side effect of destroying any
+previously existing policies.&nbsp; ImportRegPol reads the reference policy
+file and uses supported application programming interfaces (APIs) to add
+settings to local policy.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>The format of registry policy files is a <a
+href="http://msdn.microsoft.com/en-us/library/aa374407(VS.85).aspx"><span
+style='color:windowtext'>documented</span></a>, binary file format, normally
+produced by Group Policy editors such as GpEdit.msc.&nbsp; However, there
+aren’t any good viewers or editors for directly manipulating those files.&nbsp;
+For this reason, the Apply_LGPO_Delta utility uses a custom, Notepad-editable
+text file format to define specific changes to apply to local group
+policy.&nbsp; The log file format produced by ImportRegPol is compatible with Apply_LGPO_Delta
+v2.0.&nbsp; ImportRegPol can be run in a “parse-only” mode to read a
+registry.pol file and produce an equivalent input for Apply_LGPO_Delta.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>The utility requires administrative rights to import
+policies, but does not require administrator rights for parse-only mode.&nbsp;
+Note that the in-use registry.pol files in the GroupPolicy folders can be used
+for input only in parse-only mode.</p>
+
+<h1><span style='color:windowtext'>Command line syntax and usage:</span></h1>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>The ImportRegPol command line syntax is described
+below.&nbsp; All parameters are case-insensitive.&nbsp; The command line must
+include<span style='font-family:"Lucida Console"'> <b>-m</b> </span>or<b><span
+style='font-family:"Lucida Console"'> -u </span></b>followed by the absolute or
+relative path to a registry policy file.&nbsp; All other parameters are
+optional.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Lucida Console"'>ImportRegPol.exe
+–m|-u path\registry.pol [/parseOnly] [/log LogFile] [/error ErrorLogFile]
+[/boot]</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Lucida Console"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:2.5in;text-indent:-2.0in'><b><span
+style='font-size:10.0pt;font-family:"Lucida Console"'>-m <i>path\registry.pol</i></span></b><span
+style='font-size:10.0pt;font-family:"Lucida Console"'>&nbsp;&nbsp;&nbsp;[for
+Computer configuration] <i>or</i>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:2.5in;text-indent:-2.0in'><b><span
+style='font-size:10.0pt;font-family:"Lucida Console"'>-u <i>path\registry.pol</i></span></b><span
+style='font-size:10.0pt;font-family:"Lucida Console"'>&nbsp;&nbsp;&nbsp;[for
+User configuration]</span></p>
+
+<p class=MsoNormal style='margin-left:2.5in;text-indent:-2.0in'><span
+style='font-size:10.0pt;font-family:"Lucida Console"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Path\registry.pol
+specifies the absolute or relative path to the input registry policy file
+(which does not need to be named “registry.pol”).</span></p>
+
+<p class=MsoNormal style='margin-left:2.5in;text-indent:-2.0in'><span
+style='font-size:10.0pt;font-family:"Lucida Console"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:2.5in;text-indent:-2.0in'><b><span
+style='font-size:10.0pt;font-family:"Lucida Console"'>/parseOnly</span></b><span
+style='font-size:10.0pt;font-family:"Lucida Console"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reads
+and validates the input file but does not make changes to local group
+policy.&nbsp; In conjunction with the /log option, can be used to convert a
+registry policy file to an input file for Apply_LGPO_Delta.</span></p>
+
+<p class=MsoNormal style='margin-left:2.5in;text-indent:-2.0in'><span
+style='font-size:10.0pt;font-family:"Lucida Console"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:2.5in;text-indent:-2.0in'><b><span
+style='font-size:10.0pt;font-family:"Lucida Console"'>/log</span></b><span
+style='font-size:10.0pt;font-family:"Lucida Console"'> <b><i>LogFile</i></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Writes detailed results to a log file.&nbsp; If this option is not specified,
+output is not logged nor displayed.&nbsp; The logged results for the registry
+policy settings can be used as input for Apply_LGPO_Delta.</span></p>
+
+<p class=MsoNormal style='margin-left:2.5in;text-indent:-2.0in'><span
+style='font-size:10.0pt;font-family:"Lucida Console"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:2.5in;text-indent:-2.0in'><b><span
+style='font-size:10.0pt;font-family:"Lucida Console"'>/error</span></b><span
+style='font-size:10.0pt;font-family:"Lucida Console"'> <b><i>ErrorLogFile</i></b>&nbsp;&nbsp;
+Writes error information to a log file.&nbsp; If this option is not specified,
+error information is displayed in a message box dialog. </span></p>
+
+<p class=MsoNormal style='margin-left:2.5in;text-indent:-2.0in'><span
+style='font-size:10.0pt;font-family:"Lucida Console"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:2.5in;text-indent:-2.0in'><b><span
+style='font-size:10.0pt;font-family:"Lucida Console"'>/boot</span></b><span
+style='font-size:10.0pt;font-family:"Lucida Console"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Reboots the computer when done.</span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>This utility is not a console app, so you won’t see a console
+window appear, and if you start it from a CMD prompt, it will run in the
+background – CMD won’t wait for it to complete.&nbsp; You can check in TaskMgr
+to see when it completes.&nbsp; If you want CMD to wait for ImportRegPol to
+complete, run the utility with &quot;<span style='font-size:10.0pt;font-family:
+"Lucida Console"'>start /wait</span>&quot;.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Set_FDCC_LGPO", "Set_FDCC_LGPO\Set_FDCC_LGPO.vcproj", "{8B214AA0-CB60-44A6-9C43-5EB59CE4AAC7}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Set_FDCC_LGPO\\Set_FDCC_LGPO.vcproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = Set_FDCC_LGPO\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B214AA0-CB60-44A6-9C43-5EB59CE4AAC7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8B214AA0-CB60-44A6-9C43-5EB59CE4AAC7}.Debug|Win32.Build.0 = Debug|Win32
+		{8B214AA0-CB60-44A6-9C43-5EB59CE4AAC7}.Release|Win32.ActiveCfg = Release|Win32
+		{8B214AA0-CB60-44A6-9C43-5EB59CE4AAC7}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

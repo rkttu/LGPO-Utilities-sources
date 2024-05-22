@@ -1,0 +1,644 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 12 (filtered)">
+<title>Apply_LGPO_Delta - readme</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+@font-face
+	{font-family:"Lucida Console";
+	panose-1:2 11 6 9 4 5 4 2 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+h1
+	{mso-style-link:"Heading 1 Char";
+	margin-top:24.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Cambria","serif";
+	color:#365F91;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:13.0pt;
+	font-family:"Cambria","serif";
+	color:#4F81BD;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-link:"Balloon Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";}
+span.Heading1Char
+	{mso-style-name:"Heading 1 Char";
+	mso-style-link:"Heading 1";
+	font-family:"Cambria","serif";
+	color:#365F91;
+	font-weight:bold;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	font-weight:bold;}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-link:"Balloon Text";
+	font-family:"Tahoma","sans-serif";}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	margin-right:0in;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+span.emailstyle20
+	{mso-style-name:emailstyle20;
+	font-family:"Calibri","sans-serif";
+	color:windowtext;}
+span.emailstyle21
+	{mso-style-name:emailstyle21;
+	font-family:"Calibri","sans-serif";
+	color:#1F497D;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=Section1>
+
+<h1><span style='color:black'>Apply_LGPO_Delta</span></h1>
+
+<p class=MsoNormal><span style='color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='color:black'>Apply_LGPO_Delta is a
+non-interactive tool that is designed to help make automated changes to Local
+Group Policy.&nbsp; It can make changes to registry-based policy as well as
+apply security templates.&nbsp; The primary intended scenario is to apply
+custom changes to <a href="http://csrc.nist.gov/fdcc/"><span style='color:black'>FDCC</span></a>
+policies after having applied those policies to Local Group Policy using a tool
+such as <a href="http://blogs.technet.com/fdcc/pages/LGPO-Utilities.aspx"><span
+style='color:black'>Set_FDCC_LGPO</span></a>.  It can also consume output from <a
+href="http://blogs.technet.com/fdcc/pages/LGPO-Utilities.aspx">ImportRegPol</a>,
+which can convert registry.pol files to Apply_LGPO_Delta’s file format.</span></p>
+
+<p class=MsoNormal><span style='color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='color:black'>The utility requires
+administrative rights.&nbsp; If the utility is run without admin rights, an
+error message is displayed in a message box dialog.&nbsp;</span></p>
+
+<h1><span style='color:black'>Command line syntax and usage:</span></h1>
+
+<p class=MsoNormal><span style='color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Lucida Console";
+color:black'>Apply_LGPO_Delta.exe inputfile0 [inputfile1 ...] [/log LogFile]
+[/error ErrorLogFile] [/boot]</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Lucida Console";
+color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:2.5in;text-indent:-2.0in'><b><span
+style='font-size:10.0pt;font-family:"Lucida Console";color:black'>inputfile<i>N</i></span></b><span
+style='font-size:10.0pt;font-family:"Lucida Console";color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;One
+or more input files specifying the changes to make.&nbsp; Input files must be
+security template files, or registry-based policy files using a custom file
+format described below.&nbsp; Apply_LGPO_Delta automatically determines whether
+a file is a custom policy file or a security template.&nbsp; Security templates
+can be created using the “Security Templates” MMC snap-in.</span></p>
+
+<p class=MsoNormal style='margin-left:2.5in;text-indent:-2.0in'><span
+style='font-size:10.0pt;font-family:"Lucida Console";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:2.5in;text-indent:-2.0in'><b><span
+style='font-size:10.0pt;font-family:"Lucida Console";color:black'>/log</span></b><span
+style='font-size:10.0pt;font-family:"Lucida Console";color:black'> <b><i>LogFile</i></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Writes detailed results to a log file.&nbsp; If this option is not specified,
+output is not logged nor displayed.</span></p>
+
+<p class=MsoNormal style='margin-left:2.5in;text-indent:-2.0in'><span
+style='font-size:10.0pt;font-family:"Lucida Console";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:2.5in;text-indent:-2.0in'><b><span
+style='font-size:10.0pt;font-family:"Lucida Console";color:black'>/error</span></b><span
+style='font-size:10.0pt;font-family:"Lucida Console";color:black'> <b><i>ErrorLogFile</i></b>&nbsp;&nbsp;
+Writes error information to a log file.&nbsp; If this option is not specified,
+error information is displayed in a message box dialog. </span></p>
+
+<p class=MsoNormal style='margin-left:2.5in;text-indent:-2.0in'><span
+style='font-size:10.0pt;font-family:"Lucida Console";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:2.5in;text-indent:-2.0in'><b><span
+style='font-size:10.0pt;font-family:"Lucida Console";color:black'>/boot</span></b><span
+style='font-size:10.0pt;font-family:"Lucida Console";color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Reboots the computer when done.</span></p>
+
+<p class=MsoNormal><span style='color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='color:black'>This utility is not a console app,
+so you won’t see a console window appear, and if you start it from a CMD
+prompt, it will run in the background – CMD won’t wait for it to
+complete.&nbsp; You can check in TaskMgr to see when it completes.&nbsp; If you
+want CMD to wait for Apply_LGPO_Delta to complete, run the utility with &quot;</span><span
+style='font-size:10.0pt;font-family:"Lucida Console";color:black'>start /wait</span><span
+style='color:black'>&quot;.</span></p>
+
+<p class=MsoNormal><span style='color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='color:black'>Usage is demonstrated in the
+“SampleUsage.cmd” batch file that comes with Apply_LGPO_Delta.</span></p>
+
+<h1><span style='color:black'>Input files:</span></h1>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Apply_LGPO_Delta accepts two types of input files:&nbsp;
+security templates, and registry-based policy files.&nbsp; Apply_LGPO_Delta automatically
+determines whether each input file is a security template or a policy file and
+handles each appropriately.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Although security template files are text files that can be
+created or edited with Notepad, the MMC “Security Templates” snap-in is the
+recommended security template editor that ensures correct formatting and
+syntax.&nbsp; Apply_LGPO_Delta runs a “secedit.exe /configure …” command for
+each security template on the command line to import its settings.&nbsp; If the
+“/log” option is used, Apply_LGPO_Delta captures all secedit.exe output into
+the log file.&nbsp; Note that you may see secedit.exe in the process list
+(e.g., in Task Manager), but no visible window for it.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Windows normally uses “registry.pol” files to describe
+registry-based policy settings.&nbsp; “Registry.pol” is a <a
+href="http://msdn.microsoft.com/en-us/library/aa374407(VS.85).aspx">documented</a>,
+binary file format, but there aren’t any good viewers or editors for directly
+manipulating those files.&nbsp; Therefore, for registry-based policy, a custom,
+Notepad-editable file format has been defined for Apply_LGPO_Delta.&nbsp; It is
+described in detail below.&nbsp; Apply_LGPO_Delta parses each file, and Group
+Policy APIs are used to apply them to local policy.  (ImportRegPol.exe can
+parse registry.pol files and produce text files that Apply_LGPO_Delta can
+consume.)</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>For examples of these file formats, see the Starter Input
+Files described below.</p>
+
+<p class=MsoNormal><span style='color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='color:black'>Every input file must be either
+ANSI or Unicode (little-endian – the Windows default).&nbsp; Unicode input
+files must have a Byte Order Marker (BOM) in the first two bytes of the
+file.&nbsp; Most Windows tools that create Unicode files (including Notepad and
+the Security Templates snap-in) automatically insert the correct BOM in the
+file.</span></p>
+
+<h1><span style='color:black'>Starter Input Files:</span></h1>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><span style='color:black'>Apply_LGPO_Delta includes a set of
+“starter” input files, including security templates and registry-based policy
+files, that represent some of the common changes that FDCC customers may want
+to apply.&nbsp; The starter files can be used as-is, or customized.&nbsp; The
+package also includes a sample batch file that demonstrates command line
+syntax, and how to conditionally link execution of Apply_LGPO_Delta to
+Set_FDCC_LGPO.</span></p>
+
+<p class=MsoNormal><span style='color:black'>&nbsp;</span></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse'>
+ <tr>
+  <td valign=top style='border-top:solid black 1.0pt;border-left:solid black 1.0pt;
+  border-bottom:none;border-right:none;background:black;padding:0in .15in 0in .15in'>
+  <p class=MsoNormal><b><span style='color:white'>File name</span></b></p>
+  </td>
+  <td valign=top style='border-top:solid black 1.0pt;border-left:none;
+  border-bottom:none;border-right:solid black 1.0pt;background:black;
+  padding:0in .15in 0in .15in'>
+  <p class=MsoNormal><b><span style='color:white'>Description</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:solid black 1.0pt;border-right:none;padding:
+  0in .15in 0in .15in'>
+  <p class=MsoNormal><b><span style='color:black'>AutoAdminLogon_Enable.inf</span></b></p>
+  </td>
+  <td valign=top style='border:solid black 1.0pt;border-left:none;padding:0in .15in 0in .15in'>
+  <p class=MsoNormal><span style='color:black'>Enables AutoAdminLogon (intended
+  for automated image build sequences)</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:none;border-left:solid black 1.0pt;padding:0in .15in 0in .15in'>
+  <p class=MsoNormal><b><span style='color:black'>CustomRenamedAdmin.inf</span></b></p>
+  </td>
+  <td valign=top style='border:none;border-right:solid black 1.0pt;padding:
+  0in .15in 0in .15in'>
+  <p class=MsoNormal><span style='color:black'>Customize renaming of
+  Administrator and Guest accounts</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:solid black 1.0pt;border-right:none;padding:
+  0in .15in 0in .15in'>
+  <p class=MsoNormal><b><span style='color:black'>FIPS-Disable__Vista.inf</span></b></p>
+  </td>
+  <td valign=top style='border:solid black 1.0pt;border-left:none;padding:0in .15in 0in .15in'>
+  <p class=MsoNormal><span style='color:black'>Turns off requirement for
+  FIPS-approved crypto for Windows Vista</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:none;border-left:solid black 1.0pt;padding:0in .15in 0in .15in'>
+  <p class=MsoNormal><b><span style='color:black'>FIPS-Disable__XP.inf</span></b></p>
+  </td>
+  <td valign=top style='border:none;border-right:solid black 1.0pt;padding:
+  0in .15in 0in .15in'>
+  <p class=MsoNormal><span style='color:black'>Turns off requirement for
+  FIPS-approved crypto for Windows XP</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:solid black 1.0pt;border-right:none;padding:
+  0in .15in 0in .15in'>
+  <p class=MsoNormal><b><span style='color:black'>IgnoreCertErrors_Allow.txt</span></b></p>
+  </td>
+  <td valign=top style='border:solid black 1.0pt;border-left:none;padding:0in .15in 0in .15in'>
+  <p class=MsoNormal><span style='color:black'>Allow users to ignore
+  certificate errors while browsing HTTPS sites</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:none;border-left:solid black 1.0pt;padding:0in .15in 0in .15in'>
+  <p class=MsoNormal><b><span style='color:black'>JavaPermissions_AllowInSomeZones.txt</span></b></p>
+  </td>
+  <td valign=top style='border:none;border-right:solid black 1.0pt;padding:
+  0in .15in 0in .15in'>
+  <p class=MsoNormal><span style='color:black'>Remove the “Disable Java”
+  setting for some security zones</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:solid black 1.0pt;border-right:none;padding:
+  0in .15in 0in .15in'>
+  <p class=MsoNormal><b><span style='color:black'>LegalNotice_Custom.inf</span></b></p>
+  </td>
+  <td valign=top style='border:solid black 1.0pt;border-left:none;padding:0in .15in 0in .15in'>
+  <p class=MsoNormal><span style='color:black'>Customize the Legal Notice logon
+  dialog</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:none;border-left:solid black 1.0pt;padding:0in .15in 0in .15in'>
+  <p class=MsoNormal><b><span style='color:black'>LegalNotice_Disable.inf</span></b></p>
+  </td>
+  <td valign=top style='border:none;border-right:solid black 1.0pt;padding:
+  0in .15in 0in .15in'>
+  <p class=MsoNormal><span style='color:black'>Remove the Legal Notice logon
+  dialog</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:solid black 1.0pt;border-right:none;padding:
+  0in .15in 0in .15in'>
+  <p class=MsoNormal><b><span style='color:black'>NoForceSMBSigning.inf</span></b></p>
+  </td>
+  <td valign=top style='border:solid black 1.0pt;border-left:none;padding:0in .15in 0in .15in'>
+  <p class=MsoNormal><span style='color:black'>Disable the “Microsoft network
+  client: Digitally sign communications (always)” setting</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border-top:none;border-left:solid black 1.0pt;
+  border-bottom:solid black 1.0pt;border-right:none;padding:0in .15in 0in .15in'>
+  <p class=MsoNormal><b><span style='color:black'>RunOnce_DontDisable.txt</span></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid black 1.0pt;
+  border-right:solid black 1.0pt;padding:0in .15in 0in .15in'>
+  <p class=MsoNormal><span style='color:black'>Allow RunOnce processing</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border-top:none;border-left:solid black 1.0pt;
+  border-bottom:solid black 1.0pt;border-right:none;padding:0in .15in 0in .15in'>
+  <p class=MsoNormal><b><span style='color:black'>SampleUsage.cmd</span></b></p>
+  </td>
+  <td valign=top style='border-top:none;border-left:none;border-bottom:solid black 1.0pt;
+  border-right:solid black 1.0pt;padding:0in .15in 0in .15in'>
+  <p class=MsoNormal><span style='color:black'>Sample batch file that runs
+  Set_FDCC_LGPO and Apply_LGPO_Delta.exe with parameters.</span></p>
+  <p class=MsoNormal><span style='color:black'>Demonstrates command-line usage.</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='color:black'>&nbsp;</span></p>
+
+<h1><span style='color:black'>Custom file format for registry-based policy
+files:</span></h1>
+
+<p class=MsoNormal><span style='color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='color:black'>The registry-based policy input
+files are Notepad-editable text files, and can be Unicode or ANSI text.</span></p>
+
+<p class=MsoNormal><span style='color:black'>A file can consist of any number
+of entries.&nbsp; Each entry consists of four consecutive lines:</span></p>
+
+<p class=MsoNormal><span style='color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b><span style='font-family:"Lucida Console";
+color:black'>Configuration</span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b><span style='font-family:"Lucida Console";
+color:black'>Registry Key</span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b><span style='font-family:"Lucida Console";
+color:black'>Value Name</span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b><span style='font-family:"Lucida Console";
+color:black'>Action</span></b></p>
+
+<p class=MsoNormal><b><span style='color:black'>&nbsp;</span></b></p>
+
+<p class=MsoNormal><b><span style='font-family:"Lucida Console";color:black'>Configuration</span></b><span
+style='color:black'> must be either “</span><span style='font-family:"Lucida Console";
+color:black'>Computer</span><span style='color:black'>” or “</span><span
+style='font-family:"Lucida Console";color:black'>User</span><span
+style='color:black'>”, for Computer or User Configuration, respectively.&nbsp;
+It’s case-insensitive, but leading/trailing whitespace is not allowed.</span></p>
+
+<p class=MsoNormal><b><span style='font-family:"Lucida Console";color:black'>Registry
+Key</span></b><span style='color:black'> specifies the name of a registry key
+(not including the base key); e.g., </span><span style='font-family:"Lucida Console";
+color:black'>SOFTWARE\Policies\Microsoft\some policy</span></p>
+
+<p class=MsoNormal><b><span style='font-family:"Lucida Console";color:black'>Value
+Name</span></b><span style='color:black'> is the name of the registry value to
+modify.&nbsp; The value </span><span style='font-family:"Lucida Console";
+color:black'>(Default)</span><span style='color:black'> can be used to denote
+the key’s default value.  (A dummy value such as “*” should be used for the
+CREATEKEY and DELETEALLVALUES actions.)</span></p>
+
+<p class=MsoNormal><b><span style='font-family:"Lucida Console";color:black'>Action</span></b><span
+style='color:black'> specifies what action to take, and must look like one of
+the following:</span></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='margin-left:30.2pt;border-collapse:collapse;border:none'>
+ <tr>
+  <td width=164 valign=top style='width:123.3pt;border-top:solid black 1.0pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><b><span style='font-family:"Lucida Console";color:black'>DELETE</span></b></p>
+  </td>
+  <td width=498 valign=top style='width:373.5pt;border-top:solid black 1.0pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='color:black'>Deletes the value (reverting a
+  policy to “not configured”)</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=164 valign=top style='width:123.3pt;border:none;border-bottom:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><b><span style='font-family:"Lucida Console";color:black'>DWORD:<i>n</i></span></b></p>
+  </td>
+  <td width=498 valign=top style='width:373.5pt;border:none;border-bottom:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='color:black'>Sets the value to a REG_DWORD
+  value <i>n</i>.&nbsp; E.g.,</span></p>
+  <p class=MsoNormal style='margin-left:.5in'><span style='font-family:"Lucida Console";
+  color:black'>DWORD:1</span></p>
+  <p class=MsoNormal><span style='color:black'>Values can be specified in
+  hexadecimal by prepending “0x”; e.g.,</span></p>
+  <p class=MsoNormal style='margin-left:.5in'><span style='font-family:"Lucida Console";
+  color:black'>DWORD:0x1000</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=164 valign=top style='width:123.3pt;border:none;border-bottom:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><b><span style='font-family:"Lucida Console";color:black'>SZ:<i>text</i></span></b></p>
+  </td>
+  <td width=498 valign=top style='width:373.5pt;border:none;border-bottom:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='color:black'>Sets the value to a REG_SZ
+  (text) value <i>text</i>.&nbsp; E.g.,</span></p>
+  <p class=MsoNormal style='margin-left:.5in'><span style='font-family:"Lucida Console";
+  color:black'>SZ:Authorized users only!</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=164 valign=top style='width:123.3pt;border:none;border-bottom:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><b><span style='font-family:"Lucida Console";color:black'>EXSZ:<i>text</i></span></b></p>
+  </td>
+  <td width=498 valign=top style='width:373.5pt;border:none;border-bottom:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='color:black'>Sets the value to a
+  REG_EXPAND_SZ (expandable text) value <i>text</i>.&nbsp; E.g.,</span></p>
+  <p class=MsoNormal style='margin-left:.5in'><span style='font-family:"Lucida Console";
+  color:black'>EXSZ:%USERPROFILE%\Desktop</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=164 valign=top style='width:123.3pt;border:none;border-bottom:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><b><span style='font-family:"Lucida Console";color:black'>CREATEKEY</span></b></p>
+  </td>
+  <td width=498 valign=top style='width:373.5pt;border:none;border-bottom:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='color:black'>Create the key, but do not
+  create any values.  (Use “*” on the Value Name line.) </span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=164 valign=top style='width:123.3pt;border:none;border-bottom:solid black 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><b><span style='font-family:"Lucida Console";color:black'>DELETEALLVALUES</span></b></p>
+  </td>
+  <td width=498 valign=top style='width:373.5pt;border:none;border-bottom:solid black 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='color:black'>Delete all values from the
+  registry key.  (Use “*” on the Value Name line.)</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='color:black'>The four lines of an entry must be
+on consecutive lines.&nbsp; Entries can be separated by blank lines or by
+comment lines.&nbsp; Blank lines cannot contain any whitespace.&nbsp; Comment
+lines must begin with a semicolon character.&nbsp; Here is some sample content:</span></p>
+
+<p class=MsoNormal><span style='color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>; This entry reverts the
+“Disable-Java” setting in the Intranet zone to “not configured”</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>Computer</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>Software\Policies\Microsoft\Windows\CurrentVersion\Internet
+Settings\Zones\1</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>1C00</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>DELETE</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>; This entry changes the
+“Disable-Java” setting in the Trusted Sites zone to “High Safety”</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>Computer</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>Software\Policies\Microsoft\Windows\CurrentVersion\Internet
+Settings\Zones\2</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>1C00</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>DWORD:0x10000</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>; This sets the machine policy saying
+“Prevent ignoring certificate errors”</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>Computer</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>Software\Policies\Microsoft\Windows\CurrentVersion\Internet
+Settings</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>PreventIgnoreCertErrors</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>DWORD:1</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>; Sets the User Configuration
+disabling AutoComplete for forms</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>User</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>Software\Policies\Microsoft\Internet Explorer\Main</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>Use FormSuggest</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>SZ:no</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>; Removes all “allowed remote
+assistance helpers” </span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>Computer</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>Software\Policies\Microsoft\Windows
+NT\Terminal Services\RAUnsolicit</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>*</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>DELETEALLVALUES</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>; Create an empty registry key </span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>Computer</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>*</span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:10.0pt;
+font-family:"Lucida Console";color:black'>CREATEKEY</span></p>
+
+<p class=MsoNormal><span style='color:black'>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

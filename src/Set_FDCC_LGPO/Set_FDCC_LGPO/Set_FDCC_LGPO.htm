@@ -1,0 +1,213 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 12 (filtered)">
+<title>Set_FDCC_LGPO - readme</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+@font-face
+	{font-family:"Lucida Console";
+	panose-1:2 11 6 9 4 5 4 2 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+h1
+	{mso-style-link:"Heading 1 Char";
+	margin-top:24.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Cambria","serif";
+	color:#365F91;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:13.0pt;
+	font-family:"Cambria","serif";
+	color:#4F81BD;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-link:"Balloon Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";}
+span.Heading1Char
+	{mso-style-name:"Heading 1 Char";
+	mso-style-link:"Heading 1";
+	font-family:"Cambria","serif";
+	color:#365F91;
+	font-weight:bold;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	font-weight:bold;}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-link:"Balloon Text";
+	font-family:"Tahoma","sans-serif";}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	margin-right:0in;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+span.emailstyle20
+	{mso-style-name:emailstyle20;
+	font-family:"Calibri","sans-serif";
+	color:windowtext;}
+span.emailstyle21
+	{mso-style-name:emailstyle21;
+	font-family:"Calibri","sans-serif";
+	color:#1F497D;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=Section1>
+
+<h1><span style='color:black'>Set_FDCC_LGPO</span></h1>
+
+<p class=MsoNormal><span style='color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='color:black'>Set_FDCC_LGPO is a non-interactive
+tool that applies the Q1 2009 FDCC desktop policy settings from NIST to local
+group policy and optionally to the security settings of the computer as well. 
+The log file output can be used as input to the Apply_LGPO_Delta utility, for
+“tweaking” specific policy settings.</span></p>
+
+<p class=MsoNormal><span style='color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='color:black'>The utility requires
+administrative rights, and runs only on Windows XP Service Pack 2 or higher, or
+Windows Vista (RTM or higher).  If the utility is run without admin rights or
+on an unsupported platform, an error message is displayed in a message box
+dialog.  The reason for the platform constraint is that, as of this writing,
+NIST has not defined FDCC policies for any other platforms.</span></p>
+
+<h1><span style='color:black'>Command line syntax and usage:</span></h1>
+
+<p class=MsoNormal><span style='color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Lucida Console";
+color:black'>Set_FDCC_LGPO.exe [/Sec] [/log LogFile] [/error ErrorLogFile]
+[/boot]</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Lucida Console";
+color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:2.5in;text-indent:-2.0in'><b><span
+style='font-size:10.0pt;font-family:"Lucida Console";color:black'>/Sec</span></b><span
+style='font-size:10.0pt;font-family:"Lucida Console";color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets
+security policy settings in addition to registry-based (registry.pol) settings.</span></p>
+
+<p class=MsoNormal style='margin-left:2.5in;text-indent:-2.0in'><span
+style='font-size:10.0pt;font-family:"Lucida Console";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:2.5in;text-indent:-2.0in'><b><span
+style='font-size:10.0pt;font-family:"Lucida Console";color:black'>/log</span></b><span
+style='font-size:10.0pt;font-family:"Lucida Console";color:black'> <b><i>LogFile</i></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Writes detailed results to a log file.&nbsp; If this option is not specified,
+output is not logged nor displayed.  The logged results for the registry policy
+settings can be used as input for Apply_LGPO_Delta.</span></p>
+
+<p class=MsoNormal style='margin-left:2.5in;text-indent:-2.0in'><span
+style='font-size:10.0pt;font-family:"Lucida Console";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:2.5in;text-indent:-2.0in'><b><span
+style='font-size:10.0pt;font-family:"Lucida Console";color:black'>/error</span></b><span
+style='font-size:10.0pt;font-family:"Lucida Console";color:black'> <b><i>ErrorLogFile</i></b>&nbsp;&nbsp;
+Writes error information to a log file.&nbsp; If this option is not specified,
+error information is displayed in a message box dialog. </span></p>
+
+<p class=MsoNormal style='margin-left:2.5in;text-indent:-2.0in'><span
+style='font-size:10.0pt;font-family:"Lucida Console";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:2.5in;text-indent:-2.0in'><b><span
+style='font-size:10.0pt;font-family:"Lucida Console";color:black'>/boot</span></b><span
+style='font-size:10.0pt;font-family:"Lucida Console";color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Reboots the computer when done.</span></p>
+
+<p class=MsoNormal><span style='color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='color:black'>Note that all the parameters are
+optional.  If run without parameters, it will apply the registry.pol settings
+but not the security policy settings (which can override domain policy
+settings), not write a log file, but display an error message if an error
+occurred.</span></p>
+
+<p class=MsoNormal><span style='color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='color:black'>This utility is not a console app,
+so you won’t see a console window appear, and if you start it from a CMD
+prompt, it will run in the background – CMD won’t wait for it to
+complete.&nbsp; You can check in TaskMgr to see when it completes.&nbsp; If you
+want CMD to wait for Set_FDCC_LGPO to complete, run the utility with &quot;</span><span
+style='font-size:10.0pt;font-family:"Lucida Console";color:black'>start /wait</span><span
+style='color:black'>&quot;.</span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>The various registry.pol and gpttmpl.inf files from the
+expanded FDCC GPO folders are embedded in the executable.  The appropriate
+policies are applied based on whether run on XP or Vista.  For the registry.pol
+files, the files are parsed and Group Policy APIs are used to apply them to
+local policy.  If you specify /sec to apply the gpttmpl.inf security templates,
+it runs secedit.exe for each of the appropriate settings files.  You may see
+secedit.exe in the process list, but no visible window for it.</p>
+
+<p class=MsoNormal> </p>
+
+<p class=MsoNormal>The main scenarios where you’d want to use the /Sec
+parameter are when the computer is not subject to domain policies – e.g.,
+during image build, or for standalone/workgroup systems.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+</div>
+
+</body>
+
+</html>

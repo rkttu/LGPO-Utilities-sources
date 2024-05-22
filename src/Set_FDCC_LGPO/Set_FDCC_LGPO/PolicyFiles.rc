@@ -1,0 +1,14 @@
+Both.0		GptTmpl.inf	res\\Both.0.GptTmpl.inf
+Both.1		GptTmpl.inf	res\\Both.1.GptTmpl.inf
+Vista.0		GptTmpl.inf	res\\Vista.0.GptTmpl.inf
+XP.0		GptTmpl.inf	res\\XP.0.GptTmpl.inf
+Both.Machine.0		registry.pol	res\\Both.Machine.0.registry.pol
+Both.Machine.1		registry.pol	res\\Both.Machine.1.registry.pol
+Both.User.0		registry.pol	res\\Both.User.0.registry.pol
+Both.User.1		registry.pol	res\\Both.User.1.registry.pol
+Vista.Machine.0		registry.pol	res\\Vista.Machine.0.registry.pol
+Vista.Machine.1		registry.pol	res\\Vista.Machine.1.registry.pol
+Vista.Machine.2		registry.pol	res\\Vista.Machine.2.registry.pol
+Vista.User.0		registry.pol	res\\Vista.User.0.registry.pol
+XP.Machine.0		registry.pol	res\\XP.Machine.0.registry.pol
+XP.Machine.1		registry.pol	res\\XP.Machine.1.registry.pol
